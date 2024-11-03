@@ -1,9 +1,18 @@
-FROM maven:3.8.4-openjdk-17 as builder
-WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
+# Usar la imagen base de Java
+FROM openjdk:11-jre-slim
 
-FROM eclipse-temurin:17-jdk-alpine
+# Establecer el directorio de trabajo
 WORKDIR /app
-COPY --from=builder /app/target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "/app/app.jar"]
+
+# Copiar el archivo pom.xml y las dependencias
+COPY pom.xml .
+COPY src ./src
+
+# Construir la aplicación
+RUN mvn clean package
+
+# Exponer el puerto
+EXPOSE 8080
+
+# Comando para ejecutar la aplicación
+CMD ["java", "-jar", "target/ParcialDesarrollo-0.0.1-SNAPSHOT.jar"]
