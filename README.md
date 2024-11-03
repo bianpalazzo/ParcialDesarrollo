@@ -1,5 +1,5 @@
 PARCIAL DESARROLLO DE SOFTWARE
-Banca Palazzo Marquez - 50122 - 3k9
+Banca Palazzo Marquez - 50122 - 3k9 
 
 Este proyecto implementa un servicio que permite detectar si un humano es mutante basándose en su secuencia de ADN. Fue desarrollado en Java utilizando el framework Spring Boot.
 
